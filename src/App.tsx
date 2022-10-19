@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./App.css";
-import { makeStyles } from "@material-ui/core/styles";
-import Menu from "@material-ui/core/Menu";
+import { makeStyles, styled, alpha } from "@material-ui/core/styles";
+import Menu, { MenuProps } from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import logo from "../images/logo.svg";
 import Button from "@material-ui/core/Button";
@@ -54,6 +54,33 @@ const useStyles = makeStyles({
     marginTop: "40px",
   },
 });
+
+const StyledMenu = styled((props: MenuProps) => (
+  <Menu elevation={0} {...props} />
+))(({ theme }) => ({
+  "& .MuiPaper-root": {
+    borderRadius: 10,
+    marginTop: theme.spacing(1),
+    boxShadow:
+      "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
+    "& .MuiMenu-list": {
+      padding: "10px 20px",
+    },
+    "& .MuiMenuItem-root": {
+      "& .MuiSvgIcon-root": {
+        fontSize: 18,
+        color: theme.palette.text.secondary,
+        marginRight: theme.spacing(1.5),
+      },
+      "&:active": {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          theme.palette.action.selectedOpacity
+        ),
+      },
+    },
+  },
+}));
 function App() {
   const classes = useStyles();
   const [features, setFeatures] = React.useState<null | HTMLElement>(null);
@@ -89,9 +116,9 @@ function App() {
             >
               Features
             </Button>
-            <Menu
+            <StyledMenu
               anchorOrigin={{
-                vertical: "top",
+                vertical: "bottom",
                 horizontal: "right",
               }}
               transformOrigin={{
@@ -135,7 +162,7 @@ function App() {
                 ></img>
                 Planning
               </MenuItem>
-            </Menu>
+            </StyledMenu>
           </div>
           <div>
             <Button
@@ -147,15 +174,7 @@ function App() {
             >
               Company
             </Button>
-            <Menu
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
+            <StyledMenu
               className={classes.dropdownMenu}
               id="basic-menu"
               anchorEl={company}
@@ -168,7 +187,7 @@ function App() {
               <MenuItem onClick={handleCloseCompany}>History</MenuItem>
               <MenuItem onClick={handleCloseCompany}>Our Team</MenuItem>
               <MenuItem onClick={handleCloseCompany}>Blog</MenuItem>
-            </Menu>
+            </StyledMenu>
           </div>
           <div>
             <Button>Careers</Button>
@@ -185,7 +204,7 @@ function App() {
         </div>
       </div>
       <div className={classes.main}>
-        <div style={{ padding: "100px 100px" }}>
+        <div style={{ padding: "130px 100px" }}>
           <h1
             style={{
               fontSize: "70px",
@@ -209,7 +228,7 @@ function App() {
             watch productivity soar.
           </p>
           <Button className={classes.button}>Learn More</Button>
-          <div style={{ paddingTop: "150px" }}>
+          <div style={{ paddingTop: "130px" }}>
             <img
               style={{ marginRight: "20px" }}
               src={databiz}
