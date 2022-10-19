@@ -204,13 +204,16 @@ function App() {
         </div>
       </div>
       <div className={classes.main}>
-        <div style={{ padding: "130px 100px" }}>
+        <div
+          style={{ padding: "130px 100px 50px 100px ", fontFamily: "Epilogue" }}
+        >
           <h1
             style={{
               fontSize: "70px",
               paddingBottom: "20px",
               fontWeight: "900",
               lineHeight: "60px",
+              color: "hsl(0, 0%, 8%)",
             }}
           >
             Make <br />
@@ -221,6 +224,7 @@ function App() {
               fontSize: "18px",
               paddingBottom: "20px",
               fontWeight: "600",
+              color: "hsl(0, 0%, 41%)",
             }}
           >
             Get your team in sync, no matter your location.
@@ -248,6 +252,7 @@ function App() {
             display: "grid",
             justifyContent: "center",
             placeContent: "center",
+            paddingTop: "50px",
           }}
         >
           <img
