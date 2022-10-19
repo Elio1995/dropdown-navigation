@@ -1,3 +1,5 @@
+import * as React from "react";
+import { useState } from "react";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "../images/logo.svg";
@@ -7,6 +9,8 @@ import databiz from "../images/client-databiz.svg";
 import audiophile from "../images/client-audiophile.svg";
 import meet from "../images/client-meet.svg";
 import maker from "../images/client-maker.svg";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles({
   root: {
@@ -23,8 +27,8 @@ const useStyles = makeStyles({
     gridTemplateColumns: "150px 1fr 100px",
   },
   nav: {
-    margin: "0 20px",
-    fontWeight: "500",
+    display: "grid",
+    gridTemplateColumns: "120px 120px 120px 120px",
   },
   main: {
     display: "grid",
@@ -34,23 +38,97 @@ const useStyles = makeStyles({
     height: "570px",
     width: "480px",
   },
+  button: {
+    background: "transparent",
+    border: "1px solid black",
+    padding: "5px 20px",
+    borderRadius: "10px",
+  },
 });
 function App() {
   const classes = useStyles();
+  const [features, setFeatures] = React.useState<null | HTMLElement>(null);
+  const openFeatures = Boolean(features);
+  const [company, setCompany] = React.useState<null | HTMLElement>(null);
+  const openCompany = Boolean(company);
 
+  const handleClickFeatures = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setFeatures(event.currentTarget);
+  };
+  const handleCloseFeatures = () => {
+    setFeatures(null);
+  };
+  const handleClickCompany = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setCompany(event.currentTarget);
+  };
+  const handleCloseCompany = () => {
+    setCompany(null);
+  };
   return (
     <div className="App">
       <div className={classes.header}>
         <img src={logo} alt="Logo" />
-        <div>
-          <span className={classes.nav}>Features</span>
-          <span className={classes.nav}>Company</span>
-          <span className={classes.nav}>Careers</span>
-          <span className={classes.nav}>About</span>
+
+        <div className={classes.nav}>
+          <div>
+            <Button
+              id="basic-button"
+              aria-controls={openFeatures ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={openFeatures ? "true" : undefined}
+              onClick={handleClickFeatures}
+            >
+              Features
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={features}
+              open={openFeatures}
+              onClose={handleCloseFeatures}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleCloseFeatures}>Todo List</MenuItem>
+              <MenuItem onClick={handleCloseFeatures}>Calendar</MenuItem>
+              <MenuItem onClick={handleCloseFeatures}>Reminders</MenuItem>
+              <MenuItem onClick={handleCloseFeatures}>Planning</MenuItem>
+            </Menu>
+          </div>
+          <div>
+            <Button
+              id="basic-button"
+              aria-controls={openCompany ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={openCompany ? "true" : undefined}
+              onClick={handleClickCompany}
+            >
+              Company
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={company}
+              open={openCompany}
+              onClose={handleCloseCompany}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleCloseCompany}>History</MenuItem>
+              <MenuItem onClick={handleCloseCompany}>Our Team</MenuItem>
+              <MenuItem onClick={handleCloseCompany}>Blog</MenuItem>
+            </Menu>
+          </div>
+          <div>
+            <Button>Careers</Button>
+          </div>
+          <div>
+            <Button>About</Button>
+          </div>
         </div>
         <div>
-          <span className={classes.nav}>Login</span>
-          <span className={classes.nav}>Register</span>
+          <span>Login</span>
+          <span className={classes.button}>Register</span>
         </div>
       </div>
       <div className={classes.main}>
@@ -77,7 +155,7 @@ function App() {
             <br /> Streamline processes, create team rituals and <br />
             watch productivity soar.
           </p>
-          <Button>Learn More</Button>
+          <Button className={classes.button}>Learn More</Button>
           <div style={{ paddingTop: "150px" }}>
             <img
               style={{ marginRight: "20px" }}
