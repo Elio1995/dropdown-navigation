@@ -1,7 +1,8 @@
 import * as React from "react";
-import { useState } from "react";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import logo from "../images/logo.svg";
 import Button from "@material-ui/core/Button";
 import desktopHero from "../images/image-hero-desktop.png";
@@ -9,8 +10,10 @@ import databiz from "../images/client-databiz.svg";
 import audiophile from "../images/client-audiophile.svg";
 import meet from "../images/client-meet.svg";
 import maker from "../images/client-maker.svg";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import todoIcon from "../images/icon-todo.svg";
+import calendarIcon from "../images/icon-calendar.svg";
+import remindersIcon from "../images/icon-reminders.svg";
+import planningIcon from "../images/icon-planning.svg";
 
 const useStyles = makeStyles({
   root: {
@@ -43,6 +46,12 @@ const useStyles = makeStyles({
     border: "1px solid black",
     padding: "5px 20px",
     borderRadius: "10px",
+  },
+  icons: {
+    marginRight: "15px",
+  },
+  dropdownMenu: {
+    marginTop: "40px",
   },
 });
 function App() {
@@ -81,6 +90,15 @@ function App() {
               Features
             </Button>
             <Menu
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              className={classes.dropdownMenu}
               id="basic-menu"
               anchorEl={features}
               open={openFeatures}
@@ -89,10 +107,34 @@ function App() {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleCloseFeatures}>Todo List</MenuItem>
-              <MenuItem onClick={handleCloseFeatures}>Calendar</MenuItem>
-              <MenuItem onClick={handleCloseFeatures}>Reminders</MenuItem>
-              <MenuItem onClick={handleCloseFeatures}>Planning</MenuItem>
+              <MenuItem onClick={handleCloseFeatures}>
+                <img className={classes.icons} src={todoIcon} alt="todo"></img>
+                Todo List
+              </MenuItem>
+              <MenuItem onClick={handleCloseFeatures}>
+                <img
+                  className={classes.icons}
+                  src={calendarIcon}
+                  alt="calendar"
+                ></img>
+                Calendar
+              </MenuItem>
+              <MenuItem onClick={handleCloseFeatures}>
+                <img
+                  className={classes.icons}
+                  src={remindersIcon}
+                  alt="reminders"
+                ></img>
+                Reminders
+              </MenuItem>
+              <MenuItem onClick={handleCloseFeatures}>
+                <img
+                  className={classes.icons}
+                  src={planningIcon}
+                  alt="planning"
+                ></img>
+                Planning
+              </MenuItem>
             </Menu>
           </div>
           <div>
@@ -106,6 +148,15 @@ function App() {
               Company
             </Button>
             <Menu
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              className={classes.dropdownMenu}
               id="basic-menu"
               anchorEl={company}
               open={openCompany}
@@ -128,7 +179,9 @@ function App() {
         </div>
         <div>
           <span>Login</span>
-          <span className={classes.button}>Register</span>
+          <span className={classes.button} style={{ marginLeft: "50px" }}>
+            Register
+          </span>
         </div>
       </div>
       <div className={classes.main}>
