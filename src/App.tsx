@@ -14,6 +14,8 @@ import todoIcon from "../images/icon-todo.svg";
 import calendarIcon from "../images/icon-calendar.svg";
 import remindersIcon from "../images/icon-reminders.svg";
 import planningIcon from "../images/icon-planning.svg";
+import arrowUp from "../images/icon-arrow-up.svg";
+import arrowDown from "../images/icon-arrow-down.svg";
 
 const useStyles = makeStyles({
   root: {
@@ -114,7 +116,12 @@ function App() {
               aria-expanded={openFeatures ? "true" : undefined}
               onClick={handleClickFeatures}
             >
-              Features
+              <span style={{ marginRight: "7px" }}>Features</span>
+              {openFeatures ? (
+                <img src={arrowUp} alt="up"></img>
+              ) : (
+                <img src={arrowDown} alt="down"></img>
+              )}
             </Button>
             <StyledMenu
               anchorOrigin={{
@@ -172,7 +179,12 @@ function App() {
               aria-expanded={openCompany ? "true" : undefined}
               onClick={handleClickCompany}
             >
-              Company
+              <span style={{ marginRight: "7px" }}>Company</span>
+              {openCompany ? (
+                <img src={arrowUp} alt="up"></img>
+              ) : (
+                <img src={arrowDown} alt="down"></img>
+              )}
             </Button>
             <StyledMenu
               className={classes.dropdownMenu}
