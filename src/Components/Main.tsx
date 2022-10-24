@@ -37,6 +37,14 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid black",
     padding: "5px 20px",
     borderRadius: "10px",
+
+    buttonDiv: {
+      [theme.breakpoints.down(515)]: {
+        display: "grid",
+        textAlign: "center",
+        justifyContent: "center",
+      },
+    },
   },
   mainText: {
     padding: "130px 100px 50px 100px",
@@ -80,6 +88,33 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "36px",
     },
   },
+  paragraphDesktop: {
+    fontSize: "18px",
+    paddingBottom: "20px",
+    fontWeight: 600,
+    color: "hsl(0, 0%, 41%)",
+    [theme.breakpoints.down(515)]: {
+      display: "none",
+    },
+  },
+  paragraphMobile: {
+    display: "none",
+    [theme.breakpoints.down(515)]: {
+      display: "grid",
+      textAlign: "center",
+      fontSize: "18px",
+      paddingBottom: "20px",
+      fontWeight: 600,
+      color: "hsl(0, 0%, 41%)",
+    },
+  },
+  mainDivIcons: {
+    paddingTop: "130px",
+    textAlign: "center",
+    [theme.breakpoints.down(515)]: {
+      paddingTop: "30px",
+    },
+  },
 }));
 
 function Main() {
@@ -93,20 +128,19 @@ function Main() {
           remote work
         </h1>
         <h1 className={classes.headerOneMobile}>Make remote work</h1>
-        <p
-          style={{
-            fontSize: "18px",
-            paddingBottom: "20px",
-            fontWeight: "600",
-            color: "hsl(0, 0%, 41%)",
-          }}
-        >
+        <p className={classes.paragraphDesktop}>
           Get your team in sync, no matter your location.
           <br /> Streamline processes, create team rituals and <br />
           watch productivity soar.
         </p>
-        <Button className={classes.button}>Learn More</Button>
-        <div style={{ paddingTop: "130px" }}>
+        <p className={classes.paragraphMobile}>
+          Get your team in sync, no matter your location. Streamline processes,
+          create team rituals and watch productivity soar.
+        </p>
+        <div className={classes.buttonDiv}>
+          <Button className={classes.button}>Learn More</Button>
+        </div>
+        <div className={classes.mainDivIcons}>
           <img
             style={{ marginRight: "20px" }}
             src={databiz}
