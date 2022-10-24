@@ -10,19 +10,33 @@ import remindersIcon from "../../images/icon-reminders.svg";
 import planningIcon from "../../images/icon-planning.svg";
 import arrowUp from "../../images/icon-arrow-up.svg";
 import arrowDown from "../../images/icon-arrow-down.svg";
+import iconMenu from "../../images/icon-menu.svg";
+
 import "../App.css";
 
 const useStyles = makeStyles((theme) => ({
   header: {
     display: "grid",
     gridTemplateColumns: "150px 1fr 100px",
+    [theme.breakpoints.down(515)]: {
+      display: "grid",
+      gridTemplateColumns: "150px 1fr",
+    },
   },
   nav: {
     display: "grid",
     gridTemplateColumns: "120px 120px 120px 120px",
-    [theme.breakpoints.down(600)]: { display: "none" },
+    [theme.breakpoints.down(515)]: { display: "none" },
   },
-
+  loginRegister: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    [theme.breakpoints.down(515)]: { display: "none" },
+  },
+  menuIcon: {
+    display: "none",
+    [theme.breakpoints.down(515)]: { display: "grid", justifyContent: "end" },
+  },
   button: {
     background: "transparent",
     border: "1px solid black",
@@ -188,11 +202,14 @@ function Header() {
           <Button>About</Button>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+      <div className={classes.loginRegister}>
         <span style={{ marginTop: "5px" }}>LOGIN</span>
         <span style={{ marginLeft: "50px" }}>
           <Button className={classes.button}>Register</Button>
         </span>
+      </div>
+      <div className={classes.menuIcon}>
+        <img src={iconMenu} alt="Menu" />
       </div>
     </div>
   );
