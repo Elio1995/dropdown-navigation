@@ -12,7 +12,7 @@ import arrowUp from "../../images/icon-arrow-up.svg";
 import arrowDown from "../../images/icon-arrow-down.svg";
 import "../App.css";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   header: {
     display: "grid",
     gridTemplateColumns: "150px 1fr 100px",
@@ -20,6 +20,7 @@ const useStyles = makeStyles({
   nav: {
     display: "grid",
     gridTemplateColumns: "120px 120px 120px 120px",
+    [theme.breakpoints.down(600)]: { display: "none" },
   },
 
   button: {
@@ -27,6 +28,7 @@ const useStyles = makeStyles({
     border: "1px solid black",
     padding: "5px 20px",
     borderRadius: "10px",
+    fontSize: "13px",
   },
   icons: {
     marginRight: "15px",
@@ -34,7 +36,7 @@ const useStyles = makeStyles({
   dropdownMenu: {
     marginTop: "40px",
   },
-});
+}));
 const StyledMenu = styled((props: MenuProps) => (
   <Menu elevation={0} {...props} />
 ))(({ theme }) => ({
@@ -186,10 +188,10 @@ function Header() {
           <Button>About</Button>
         </div>
       </div>
-      <div>
-        <span>Login</span>
-        <span className={classes.button} style={{ marginLeft: "50px" }}>
-          Register
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+        <span style={{ marginTop: "5px" }}>LOGIN</span>
+        <span style={{ marginLeft: "50px" }}>
+          <Button className={classes.button}>Register</Button>
         </span>
       </div>
     </div>
