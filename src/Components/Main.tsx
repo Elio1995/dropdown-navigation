@@ -37,13 +37,20 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid black",
     padding: "5px 20px",
     borderRadius: "10px",
-
-    buttonDiv: {
-      [theme.breakpoints.down(515)]: {
-        display: "grid",
-        textAlign: "center",
-        justifyContent: "center",
+    [theme.breakpoints.down(515)]: {
+      backgroundColor: "black",
+      color: "white",
+      "&:hover": {
+        color: "black",
       },
+      fontWeight: 800,
+    },
+  },
+  buttonDiv: {
+    [theme.breakpoints.down(515)]: {
+      display: "grid",
+      textAlign: "center",
+      justifyContent: "center",
     },
   },
   mainText: {
@@ -112,7 +119,10 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "130px",
     textAlign: "center",
     [theme.breakpoints.down(515)]: {
-      paddingTop: "30px",
+      paddingTop: "50px",
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr 1fr 1fr",
+      gap: "20px",
     },
   },
 }));
@@ -142,17 +152,25 @@ function Main() {
         </div>
         <div className={classes.mainDivIcons}>
           <img
-            style={{ marginRight: "20px" }}
+            style={{ marginRight: "20px", height: "auto", maxWidth: "100%" }}
             src={databiz}
             alt="databiz"
           ></img>
           <img
-            style={{ marginRight: "20px" }}
+            style={{ marginRight: "20px", height: "auto", maxWidth: "100%" }}
             src={audiophile}
             alt="audiophile"
           ></img>
-          <img style={{ marginRight: "20px" }} src={meet} alt="meet"></img>
-          <img style={{ marginRight: "20px" }} src={maker} alt="maker"></img>
+          <img
+            style={{ marginRight: "20px", height: "auto", maxWidth: "100%" }}
+            src={meet}
+            alt="meet"
+          ></img>
+          <img
+            style={{ marginRight: "20px", height: "auto", maxWidth: "100%" }}
+            src={maker}
+            alt="maker"
+          ></img>
         </div>
       </div>
       <div
