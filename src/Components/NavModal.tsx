@@ -1,16 +1,14 @@
 import { Box, Modal, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import "../App.css";
 
-const style = {
+const style: {} = {
   position: "absolute" as "absolute",
-  top: "36%",
-  left: "40%",
-  transform: "translate(-0%, -50%)",
+  right: "0%",
   width: 200,
   boxShadow: 24,
-  marginTop: "100px",
   backgroundColor: "white",
   height: "100vh",
   padding: "100px 20px 50px 20px",
