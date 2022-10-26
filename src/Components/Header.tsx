@@ -13,6 +13,7 @@ import arrowDown from "../../images/icon-arrow-down.svg";
 import iconMenu from "../../images/icon-menu.svg";
 
 import "../App.css";
+import NavModal from "./NavModal";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -97,6 +98,12 @@ function Header() {
   const handleCloseCompany = () => {
     setCompany(null);
   };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+
   return (
     <div className={classes.header}>
       <img src={logo} alt="Logo" />
@@ -209,7 +216,10 @@ function Header() {
         </span>
       </div>
       <div className={classes.menuIcon}>
-        <img src={iconMenu} alt="Menu" />
+        <Button>
+          <img onClick={handleOpen} src={iconMenu} alt="Menu" />
+        </Button>
+        <NavModal open={open} handleClose={handleClose} setOpen={setOpen} />
       </div>
     </div>
   );
