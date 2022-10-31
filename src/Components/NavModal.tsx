@@ -1,7 +1,14 @@
 import { Box, Modal, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import todoIcon from "../../images/icon-todo.svg";
+import calendarIcon from "../../images/icon-calendar.svg";
+import remindersIcon from "../../images/icon-reminders.svg";
+import planningIcon from "../../images/icon-planning.svg";
 import "../App.css";
 
 const style: {} = {
@@ -11,7 +18,7 @@ const style: {} = {
   boxShadow: 24,
   backgroundColor: "white",
   height: "100vh",
-  padding: "100px 20px 50px 20px",
+  padding: "0px 10px 10px 20px",
 };
 
 function NavModal(props: any) {
@@ -28,12 +35,89 @@ function NavModal(props: any) {
             <CloseIcon style={{ height: "50px", width: "50px" }} />
           </IconButton>
         </div>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
-        </Typography>
-        <Typography id="modal-modal-description">
-          <>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</>
-        </Typography>
+        <div>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography>Features</Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              style={{
+                display: "grid",
+                gridTemplateRows: "1fr 1fr 1fr 1fr",
+                gap: "20px",
+                marginLeft: "20px",
+              }}
+            >
+              <Typography>
+                <img
+                  style={{ marginRight: "10px" }}
+                  src={todoIcon}
+                  alt="todo"
+                ></img>
+                Todo List
+              </Typography>
+              <Typography>
+                <img
+                  style={{ marginRight: "10px" }}
+                  src={calendarIcon}
+                  alt="calendar"
+                ></img>
+                Calendar
+              </Typography>
+              <Typography>
+                <img
+                  style={{ marginRight: "10px" }}
+                  src={remindersIcon}
+                  alt="reminders"
+                ></img>
+                Reminders
+              </Typography>
+              <Typography>
+                <img
+                  style={{ marginRight: "10px" }}
+                  src={planningIcon}
+                  alt="planning"
+                ></img>
+                Planning
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+            >
+              <Typography>Company</Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              style={{
+                display: "grid",
+                gridTemplateRows: "1fr 1fr 1fr",
+                gap: "20px",
+                marginLeft: "20px",
+              }}
+            >
+              <Typography>History</Typography>
+              <Typography>Our Team</Typography>
+              <Typography>Blog</Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary>
+              <Typography>Careers</Typography>
+            </AccordionSummary>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary>
+              <Typography>About</Typography>
+            </AccordionSummary>
+          </Accordion>
+        </div>
       </Box>
     </Modal>
   );
