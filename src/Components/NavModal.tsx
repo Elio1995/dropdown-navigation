@@ -1,4 +1,4 @@
-import { Box, Modal, Typography } from "@material-ui/core";
+import { Box, Button, makeStyles, Modal, Typography } from "@material-ui/core";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -11,10 +11,23 @@ import remindersIcon from "../../images/icon-reminders.svg";
 import planningIcon from "../../images/icon-planning.svg";
 import "../App.css";
 
+const useStyles = makeStyles(() => ({
+  button: {
+    width: "100%",
+    background: "transparent",
+    fontSize: "13px",
+    marginTop: "0px",
+    "&:hover": {
+      border: "1px solid grey",
+      borderRadius: "10px",
+      padding: "10px 20px",
+    },
+  },
+}));
 const style: {} = {
   position: "absolute" as "absolute",
   right: "0%",
-  width: 200,
+  width: 230,
   boxShadow: 24,
   backgroundColor: "white",
   height: "100vh",
@@ -22,6 +35,8 @@ const style: {} = {
 };
 
 function NavModal(props: any) {
+  const classes = useStyles();
+
   return (
     <Modal
       open={props.open}
@@ -36,7 +51,7 @@ function NavModal(props: any) {
           </IconButton>
         </div>
         <div>
-          <Accordion>
+          <Accordion elevation={0}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -86,7 +101,7 @@ function NavModal(props: any) {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion>
+          <Accordion elevation={0}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -107,16 +122,24 @@ function NavModal(props: any) {
               <Typography>Blog</Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion>
+          <Accordion elevation={0}>
             <AccordionSummary>
               <Typography>Careers</Typography>
             </AccordionSummary>
           </Accordion>
-          <Accordion>
+          <Accordion elevation={0}>
             <AccordionSummary>
               <Typography>About</Typography>
             </AccordionSummary>
           </Accordion>
+          <div style={{ display: "grid", gridTemplateRows: "1fr 1fr" }}>
+            <span style={{ textAlign: "center" }}>
+              <Button className={classes.button}>Login</Button>
+            </span>
+            <span style={{ textAlign: "center" }}>
+              <Button className={classes.button}>Register</Button>
+            </span>
+          </div>
         </div>
       </Box>
     </Modal>
