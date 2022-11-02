@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
     background: "transparent",
     fontSize: "13px",
     marginTop: "0px",
+    color: "hsl(0, 0%, 41%)",
     "&:hover": {
       border: "1px solid grey",
       borderRadius: "10px",
@@ -56,6 +57,7 @@ function NavModal(props: any) {
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
+              style={{ color: "hsl(0, 0%, 41%)" }}
             >
               <Typography>Features</Typography>
             </AccordionSummary>
@@ -65,6 +67,7 @@ function NavModal(props: any) {
                 gridTemplateRows: "1fr 1fr 1fr 1fr",
                 gap: "20px",
                 marginLeft: "20px",
+                color: "hsl(0, 0%, 41%)",
               }}
             >
               <Typography>
@@ -106,6 +109,7 @@ function NavModal(props: any) {
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
               id="panel2a-header"
+              style={{ color: "hsl(0, 0%, 41%)" }}
             >
               <Typography>Company</Typography>
             </AccordionSummary>
@@ -115,6 +119,7 @@ function NavModal(props: any) {
                 gridTemplateRows: "1fr 1fr 1fr",
                 gap: "20px",
                 marginLeft: "20px",
+                color: "hsl(0, 0%, 41%)",
               }}
             >
               <Typography>History</Typography>
@@ -123,12 +128,12 @@ function NavModal(props: any) {
             </AccordionDetails>
           </Accordion>
           <Accordion elevation={0}>
-            <AccordionSummary>
+            <AccordionSummary style={{ color: "hsl(0, 0%, 41%)" }}>
               <Typography>Careers</Typography>
             </AccordionSummary>
           </Accordion>
           <Accordion elevation={0}>
-            <AccordionSummary>
+            <AccordionSummary style={{ color: "hsl(0, 0%, 41%)" }}>
               <Typography>About</Typography>
             </AccordionSummary>
           </Accordion>
